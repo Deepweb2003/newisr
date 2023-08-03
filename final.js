@@ -512,6 +512,8 @@ return new ol.style.Style({
 });
 }
 
+///
+
 // Add a property to each feature to store its original style as JSON
 vectorLayer.getSource().getFeatures().forEach(function(feature) {
 var originalStyle = feature.getStyle();
