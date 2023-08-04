@@ -33,7 +33,7 @@ var map = new ol.Map({
 		
 		  
 		  var overlays = new ol.layer.Group({
-                'title': 'Overlays',
+                'title': 'Amc',
                 layers: [
                   new ol.layer.Image({
                     title: 'AMC Boarder',
@@ -49,104 +49,7 @@ var map = new ol.Map({
                 }),
         
         
-                new ol.layer.Image({
-                    title: 'Road',
-                   
-                    source: new ol.source.ImageWMS({
-                        url: 'http://localhost:8080/geoserver/retry/wms',
-                        params: {
-                            'LAYERS': 'retry:6-5-2023-1867336'
-                        },
-                        ratio: 1,
-                        serverType: 'geoserver'
-                    })
-                }),
-        
-                new ol.layer.Image({
-                    title: 'Road',
-                  
-                    source: new ol.source.ImageWMS({
-                        url: 'http://localhost:8080/geoserver/retry/wms',
-                        params: {
-                            'LAYERS': 'retry:6-5-2023-8429511'
-                        },
-                        ratio: 1,
-                        serverType: 'geoserver'
-                    })
-                }),
-                new ol.layer.Image({
-                    title: 'Road',
-                 
-                    source: new ol.source.ImageWMS({
-                        url: 'http://localhost:8080/geoserver/retry/wms',
-                        params: {
-                            'LAYERS': 'retry:6-5-2023-8700350'
-                        },
-                        ratio: 1,
-                        serverType: 'geoserver'
-                    })
-                }),
-                new ol.layer.Image({
-                    title: 'Test',
-                    
-                    source: new ol.source.ImageWMS({
-                        url: 'http://localhost:8080/geoserver/retry/wms',
-                        params: {
-                            'LAYERS': 'retry:test'
-                        },
-                        ratio: 1,
-                        serverType: 'geoserver'
-                    })
-                }),
-                new ol.layer.Image({
-                  title: 'agricultural area',
-                 
-                  source: new ol.source.ImageWMS({
-                      url: 'http://localhost:8080/geoserver/retry/wms?',
-                      params: {
-                          'LAYERS': 'retry:agricultural area'
-                      },
-                      ratio: 1,
-                      serverType: 'geoserver'
-                  })
-              }),
-        
-              new ol.layer.Image({
-                title: 'forest',
-                
-                source: new ol.source.ImageWMS({
-                    url: 'http://localhost:8080/geoserver/retry/wms?',
-                    params: {
-                        'LAYERS': 'retry:forest'
-                    },
-                    ratio: 1,
-                    serverType: 'geoserver'
-                })
-            }),
-            new ol.layer.Image({
-              title: 'lake',
-           
-              source: new ol.source.ImageWMS({
-                  url: 'http://localhost:8080/geoserver/retry/wms?',
-                  params: {
-                      'LAYERS': 'retry:lake'
-                  },
-                  ratio: 1,
-                  serverType: 'geoserver'
-              })
-          }),new ol.layer.Image({
-            title: 'wasteland',
-            
-            source: new ol.source.ImageWMS({
-                url: 'http://localhost:8080/geoserver/retry/wms?',
-                params: {
-                    'LAYERS': '	retry:wasteland'
-                },
-                ratio: 1,
-                serverType: 'geoserver'
-            })
-        }),
-        
+               
         
 		
 		],
@@ -154,29 +57,18 @@ var map = new ol.Map({
 		});
 
     var overlays2 = new ol.layer.Group({
-      'title': 'Overlays',
+      'title': 'Roads',
       layers: [
-        new ol.layer.Image({
-          title: 'AMC Boarder',
-          source: new ol.source.ImageWMS({
-              url: 'http://localhost:8080/geoserver/retry/wms',
-              params: {
-                  'LAYERS': 'retry:6-4-2023-1296624'
-              },
-              ratio: 1,
-              serverType: 'geoserver',
-            
-          })
-      }),
+     
 
 
       new ol.layer.Image({
-          title: 'Road',
+          title: 'National Highway',
         
           source: new ol.source.ImageWMS({
               url: 'http://localhost:8080/geoserver/retry/wms',
               params: {
-                  'LAYERS': 'retry:6-5-2023-1867336'
+                  'LAYERS': '	retry:national highways'
               },
               ratio: 1,
               serverType: 'geoserver'
@@ -184,88 +76,83 @@ var map = new ol.Map({
       }),
 
       new ol.layer.Image({
-          title: 'Road',
+          title: 'Road-2',
        
           source: new ol.source.ImageWMS({
               url: 'http://localhost:8080/geoserver/retry/wms',
               params: {
-                  'LAYERS': 'retry:6-5-2023-8429511'
+                  'LAYERS': '	retry:state highways'
               },
               ratio: 1,
               serverType: 'geoserver'
           })
       }),
-      new ol.layer.Image({
-          title: 'Road',
-        
-          source: new ol.source.ImageWMS({
-              url: 'http://localhost:8080/geoserver/retry/wms',
-              params: {
-                  'LAYERS': 'retry:6-5-2023-8700350'
-              },
-              ratio: 1,
-              serverType: 'geoserver'
-          })
-      }),
-      new ol.layer.Image({
-          title: 'Test',
-  
-          source: new ol.source.ImageWMS({
-              url: 'http://localhost:8080/geoserver/retry/wms',
-              params: {
-                  'LAYERS': 'retry:test'
-              },
-              ratio: 1,
-              serverType: 'geoserver'
-          })
-      }),
-      new ol.layer.Image({
-        title: 'agricultural area',
-        
-        source: new ol.source.ImageWMS({
-            url: 'http://localhost:8080/geoserver/retry/wms?',
-            params: {
-                'LAYERS': 'retry:agricultural area'
-            },
-            ratio: 1,
-            serverType: 'geoserver'
-        })
-    }),
-
-    new ol.layer.Image({
-      title: 'forest',
+   
     
-      source: new ol.source.ImageWMS({
-          url: 'http://localhost:8080/geoserver/retry/wms?',
-          params: {
-              'LAYERS': 'retry:forest'
-          },
-          ratio: 1,
-          serverType: 'geoserver'
-      })
-  }),
+
+
+
+],
+
+});
+
+var overlays3 = new ol.layer.Group({
+  'title': 'Natural Assets',
+  layers: [
+ 
+
+
+ 
+
+
+
   new ol.layer.Image({
-    title: 'lake',
+    title: 'agricultural area',
     
     source: new ol.source.ImageWMS({
         url: 'http://localhost:8080/geoserver/retry/wms?',
         params: {
-            'LAYERS': 'retry:lake'
+            'LAYERS': 'retry:agricultural area'
         },
         ratio: 1,
         serverType: 'geoserver'
     })
-}),new ol.layer.Image({
-  title: 'wasteland',
+}),
+
+new ol.layer.Image({
+  title: 'forest',
 
   source: new ol.source.ImageWMS({
       url: 'http://localhost:8080/geoserver/retry/wms?',
       params: {
-          'LAYERS': '	retry:wasteland'
+          'LAYERS': 'retry:forest'
       },
       ratio: 1,
       serverType: 'geoserver'
   })
+}),
+new ol.layer.Image({
+title: 'lake',
+
+source: new ol.source.ImageWMS({
+    url: 'http://localhost:8080/geoserver/retry/wms?',
+    params: {
+        'LAYERS': 'retry:lake'
+    },
+    ratio: 1,
+    serverType: 'geoserver'
+})
+}),new ol.layer.Image({
+title: 'wasteland',
+
+source: new ol.source.ImageWMS({
+  url: 'http://localhost:8080/geoserver/retry/wms?',
+  params: {
+      'LAYERS': '	retry:wasteland'
+  },
+  ratio: 1,
+  serverType: 'geoserver'
+})
 }),
 
 
@@ -281,11 +168,33 @@ var map = new ol.Map({
 	  map.addLayer(base_maps);
 	  map.addLayer(overlays);
     map.addLayer(overlays2);
-	  
+	  map.addLayer(overlays3);
 	 
-	var mouse_position = new ol.control.MousePosition();
-	map.addControl(mouse_position);
-	
+
+// ...
+
+// proximity control
+var mouseCoordinatesControl = new ol.control.Control({
+  element: document.getElementById('mouse-coordinates'),
+});
+
+// Add the control to the map
+map.addControl(mouseCoordinatesControl);
+
+// Function to update the mouse coordinates when the pointer moves
+function updateMouseCoordinates(evt) {
+  var coords = ol.proj.toLonLat(evt.coordinate);
+  var lat = coords[1];
+  var lon = coords[0];
+  document.getElementById('mouse-coordinates').innerText =
+    'Latitude: ' + lat.toFixed(6) + ', Longitude: ' + lon.toFixed(6);
+}
+
+map.on('pointermove', function (evt) {
+  updateMouseCoordinates(evt);
+});
+
+// ...
 
 	
 	var full_sc = new ol.control.FullScreen({label:'F'});
@@ -423,8 +332,8 @@ collectionRef.get().then(function(querySnapshot) {
  
    // auto zoomed location while reloading
 var lat =  23.83;
-var lon = 91.23 ;
-var zoomLevel = 11; 
+var lon = 91.30 ;
+var zoomLevel = 13; 
 
 // Convert the latitude and longitude to OpenLayers coordinates
 var center = ol.proj.fromLonLat([lon, lat]);
@@ -457,7 +366,7 @@ map.on('click', function(e) {
       
 
       
-      content += '<img src="' + assetData.assetImagesUrl + '" alt="Asset Image" class="img-fluid">';
+      // content += '<img src="' + assetData.assetImagesUrl + '" alt="Asset Image" class="img-fluid">';
       content += '<p>Uploaded by : ' + assetData.uploadedBy + '</p>'+
                   '<p>Description :' + assetData.description + '</p>'+
                   '<p>Physical condition:' + assetData.physicalCondition + '</p>';
