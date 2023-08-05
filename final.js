@@ -26,6 +26,18 @@ var map = new ol.Map({
                         type: 'base',
                         visible: true,
                         source: new ol.source.OSM()
+                    }),
+
+                    new ol.layer.Tile({
+                        title: 'Satellite',
+                        type: 'base',
+                        visible: true,
+                        source: new ol.source.XYZ({
+                            
+                            attributionsCollapsible: false,
+                            url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+                            maxZoom: 23
+                        })
                     })
                 ]
             });
@@ -38,9 +50,9 @@ var map = new ol.Map({
                   new ol.layer.Image({
                     title: 'AMC Boarder',
                     source: new ol.source.ImageWMS({
-                        url: 'http://localhost:8080/geoserver/retry/wms',
+                        url: 'http://13.126.232.83:8080/geoserver/amcfinal/wms',
                         params: {
-                            'LAYERS': 'retry:6-4-2023-1296624'
+                            'LAYERS': '	amcfinal:6-4-2023-1296624'
                         },
                         ratio: 1,
                         serverType: 'geoserver',
@@ -66,9 +78,9 @@ var map = new ol.Map({
           title: 'National Highway',
         
           source: new ol.source.ImageWMS({
-              url: 'http://localhost:8080/geoserver/retry/wms',
+              url: 'http://13.126.232.83:8080/geoserver/amcfinal/wms',
               params: {
-                  'LAYERS': '	retry:national highways'
+                  'LAYERS': '	amcfinal:national highways'
               },
               ratio: 1,
               serverType: 'geoserver'
@@ -76,12 +88,12 @@ var map = new ol.Map({
       }),
 
       new ol.layer.Image({
-          title: 'Road-2',
+          title: 'State Highway',
        
           source: new ol.source.ImageWMS({
-              url: 'http://localhost:8080/geoserver/retry/wms',
+              url: 'http://13.126.232.83:8080/geoserver/amcfinal/wms',
               params: {
-                  'LAYERS': '	retry:state highways'
+                  'LAYERS': '	amcfinal:state highways'
               },
               ratio: 1,
               serverType: 'geoserver'
@@ -110,9 +122,9 @@ var overlays3 = new ol.layer.Group({
     title: 'agricultural area',
     
     source: new ol.source.ImageWMS({
-        url: 'http://localhost:8080/geoserver/retry/wms?',
+        url: 'http://13.126.232.83:8080/geoserver/amcfinal/wms',
         params: {
-            'LAYERS': 'retry:agricultural area'
+            'LAYERS': 'amcfinal:agricultural area'
         },
         ratio: 1,
         serverType: 'geoserver'
@@ -123,9 +135,9 @@ new ol.layer.Image({
   title: 'forest',
 
   source: new ol.source.ImageWMS({
-      url: 'http://localhost:8080/geoserver/retry/wms?',
+      url: 'http://13.126.232.83:8080/geoserver/amcfinal/wms',
       params: {
-          'LAYERS': 'retry:forest'
+          'LAYERS': '	amcfinal:forest'
       },
       ratio: 1,
       serverType: 'geoserver'
@@ -135,9 +147,9 @@ new ol.layer.Image({
 title: 'lake',
 
 source: new ol.source.ImageWMS({
-    url: 'http://localhost:8080/geoserver/retry/wms?',
+    url: 'http://13.126.232.83:8080/geoserver/amcfinal/wms',
     params: {
-        'LAYERS': 'retry:lake'
+        'LAYERS': '	amcfinal:lake'
     },
     ratio: 1,
     serverType: 'geoserver'
@@ -146,9 +158,9 @@ source: new ol.source.ImageWMS({
 title: 'wasteland',
 
 source: new ol.source.ImageWMS({
-  url: 'http://localhost:8080/geoserver/retry/wms?',
+  url: 'http://13.126.232.83:8080/geoserver/amcfinal/wms',
   params: {
-      'LAYERS': '	retry:wasteland'
+      'LAYERS': '		amcfinal:wasteland'
   },
   ratio: 1,
   serverType: 'geoserver'
