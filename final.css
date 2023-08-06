@@ -136,3 +136,11 @@ top: 90%;
 left:10px;
   
 }
+
+.custom-tooltip {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  font-size: 12px;
+  padding: 4px;
+  border-radius: 4px;
+}
