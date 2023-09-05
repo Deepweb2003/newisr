@@ -234,77 +234,77 @@
       map.addControl(layerSwitcher);
       
       
-      // measurement feature
+  //     // measurement feature
   
-      var source = new ol.source.Vector();
+  //     var source = new ol.source.Vector();
   
-  var draw = new ol.interaction.Draw({
-    source: source,
-    type: 'LineString',
-  });
+  // var draw = new ol.interaction.Draw({
+  //   source: source,
+  //   type: 'LineString',
+  // });
   
-  map.addInteraction(draw);
+  // map.addInteraction(draw);
   
-  var formatLength = function(line) {
-    var length = ol.sphere.getLength(line);
-    var output;
-    if (length > 1000) {
-      output = (Math.round(length / 1000 * 100) / 100) + ' ' + 'km';
-    } else {
-      output = (Math.round(length * 100) / 100) + ' ' + 'm';
-    }
-    return output;
-  };
+  // var formatLength = function(line) {
+  //   var length = ol.sphere.getLength(line);
+  //   var output;
+  //   if (length > 1000) {
+  //     output = (Math.round(length / 1000 * 100) / 100) + ' ' + 'km';
+  //   } else {
+  //     output = (Math.round(length * 100) / 100) + ' ' + 'm';
+  //   }
+  //   return output;
+  // };
   
-  var tooltip = document.createElement('div');
-  tooltip.className = 'ol-tooltip ol-tooltip-measure';
-  var overlay = new ol.Overlay({
-    element: tooltip,
-    offset: [0, -15],
-    positioning: 'bottom-center'
-  });
-  map.addOverlay(overlay);
+  // var tooltip = document.createElement('div');
+  // tooltip.className = 'ol-tooltip ol-tooltip-measure';
+  // var overlay = new ol.Overlay({
+  //   element: tooltip,
+  //   offset: [0, -15],
+  //   positioning: 'bottom-center'
+  // });
+  // map.addOverlay(overlay);
   
-  var listener;
-  draw.on('drawstart', function(evt) {
-    source.clear();
-    var sketch = evt.feature;
-    var tooltipCoord = evt.coordinate;
-    listener = sketch.getGeometry().on('change', function(evt) {
-      var geom = evt.target;
-      var output = formatLength(geom);
-      tooltipCoord = geom.getLastCoordinate();
-      tooltip.innerHTML = output;
-      overlay.setPosition(tooltipCoord);
-    });
-  });
+  // var listener;
+  // draw.on('drawstart', function(evt) {
+  //   source.clear();
+  //   var sketch = evt.feature;
+  //   var tooltipCoord = evt.coordinate;
+  //   listener = sketch.getGeometry().on('change', function(evt) {
+  //     var geom = evt.target;
+  //     var output = formatLength(geom);
+  //     tooltipCoord = geom.getLastCoordinate();
+  //     tooltip.innerHTML = output;
+  //     overlay.setPosition(tooltipCoord);
+  //   });
+  // });
   
-  draw.on('drawend', function() {
-    tooltipCoord = null;
-    tooltip.innerHTML = '';
-    overlay.setPosition(null);
-    ol.Observable.unByKey(listener);
-  });
+  // draw.on('drawend', function() {
+  //   tooltipCoord = null;
+  //   tooltip.innerHTML = '';
+  //   overlay.setPosition(null);
+  //   ol.Observable.unByKey(listener);
+  // });
   
-  //toggle measure
+  // //toggle measure
   
-  // Define a variable to track the measure interaction
-  var measureActive = false;
+  // // Define a variable to track the measure interaction
+  // var measureActive = false;
   
-  // Function to toggle the measure interaction
-  function toggleMeasure() {
-    if (measureActive) {
-      map.removeInteraction(draw);
-      measureActive = false;
-    } else {
-      map.addInteraction(draw);
-      measureActive = true;
-    }
-  }
+  // // Function to toggle the measure interaction
+  // function toggleMeasure() {
+  //   if (measureActive) {
+  //     map.removeInteraction(draw);
+  //     measureActive = false;
+  //   } else {
+  //     map.addInteraction(draw);
+  //     measureActive = true;
+  //   }
+  // }
   
-  // Add a click event listener to the measure toggle button
-  var measureToggleBtn = document.getElementById('measureToggle');
-  measureToggleBtn.addEventListener('click', toggleMeasure);
+  // // Add a click event listener to the measure toggle button
+  // var measureToggleBtn = document.getElementById('measureToggle');
+  // measureToggleBtn.addEventListener('click', toggleMeasure);
   
   
     
