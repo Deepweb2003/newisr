@@ -144,3 +144,20 @@ left:10px;
   padding: 4px;
   border-radius: 4px;
 }
+
+
+.ol-tooltip {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  color: white;
+  padding: 4px 8px;
+}
+
+#measureToggle {
+  position: absolute;
+  top: 20px;
+  left: 40px;
+  z-index: 1000;
+}
+
+
