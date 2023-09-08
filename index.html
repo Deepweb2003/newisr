@@ -1,8 +1,9 @@
 <!DOCTYPE html >
 <html lang="en">
 <head>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-        const checkAuth= async()=>{
+        async function checkAuth(){
           const token=localStorage.getItem('authorization');
           axios.defaults.headers.common['authorization'] = `${localStorage.getItem('authorization')}`;
           if(token)
@@ -11,7 +12,7 @@
             window.location.href="/final.html"
           });
         };
-        checkAuth();  
+        checkAuth()
     </script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
