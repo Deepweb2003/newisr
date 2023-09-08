@@ -1,6 +1,18 @@
 <!DOCTYPE html >
 <html lang="en">
 <head>
+    <script>
+        const checkAuth= async()=>{
+          const token=localStorage.getItem('authorization');
+          axios.defaults.headers.common['authorization'] = `${localStorage.getItem('authorization')}`;
+          if(token)
+          await axios.post("https://amc-backend.onrender.com/user/check")
+          .then((res)=>{
+            window.location.href="/final.html"
+          });
+        };
+        checkAuth();  
+    </script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
