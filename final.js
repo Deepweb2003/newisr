@@ -110,7 +110,7 @@
     });
     
     var overlays3 = new ol.layer.Group({
-      'title': 'Natural Assets',
+      'title': 'Land Use & Land Cover',
       layers: [
      
     
