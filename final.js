@@ -234,78 +234,80 @@
       map.addControl(layerSwitcher);
       
       
-  //     // measurement feature
+      // measurement feature
   
-  //     var source = new ol.source.Vector();
-  
-  // var draw = new ol.interaction.Draw({
-  //   source: source,
-  //   type: 'LineString',
-  // });
-  
-  // map.addInteraction(draw);
-  
-  // var formatLength = function(line) {
-  //   var length = ol.sphere.getLength(line);
-  //   var output;
-  //   if (length > 1000) {
-  //     output = (Math.round(length / 1000 * 100) / 100) + ' ' + 'km';
-  //   } else {
-  //     output = (Math.round(length * 100) / 100) + ' ' + 'm';
-  //   }
-  //   return output;
-  // };
-  
-  // var tooltip = document.createElement('div');
-  // tooltip.className = 'ol-tooltip ol-tooltip-measure';
-  // var overlay = new ol.Overlay({
-  //   element: tooltip,
-  //   offset: [0, -15],
-  //   positioning: 'bottom-center'
-  // });
-  // map.addOverlay(overlay);
-  
-  // var listener;
-  // draw.on('drawstart', function(evt) {
-  //   source.clear();
-  //   var sketch = evt.feature;
-  //   var tooltipCoord = evt.coordinate;
-  //   listener = sketch.getGeometry().on('change', function(evt) {
-  //     var geom = evt.target;
-  //     var output = formatLength(geom);
-  //     tooltipCoord = geom.getLastCoordinate();
-  //     tooltip.innerHTML = output;
-  //     overlay.setPosition(tooltipCoord);
-  //   });
-  // });
-  
-  // draw.on('drawend', function() {
-  //   tooltipCoord = null;
-  //   tooltip.innerHTML = '';
-  //   overlay.setPosition(null);
-  //   ol.Observable.unByKey(listener);
-  // });
-  
-  // //toggle measure
-  
-  // // Define a variable to track the measure interaction
-  // var measureActive = false;
-  
-  // // Function to toggle the measure interaction
-  // function toggleMeasure() {
-  //   if (measureActive) {
-  //     map.removeInteraction(draw);
-  //     measureActive = false;
-  //   } else {
-  //     map.addInteraction(draw);
-  //     measureActive = true;
-  //   }
-  // }
-  
-  // // Add a click event listener to the measure toggle button
-  // var measureToggleBtn = document.getElementById('measureToggle');
-  // measureToggleBtn.addEventListener('click', toggleMeasure);
-  
+// ...
+//measure
+
+
+var source = new ol.source.Vector();
+
+// Initialize the draw interaction
+var draw = new ol.interaction.Draw({
+  source: source,
+  type: 'LineString',
+});
+
+var formatLength = function(line) {
+  var length = ol.sphere.getLength(line);
+  var output;
+  if (length > 1000) {
+    output = (Math.round(length / 1000 * 100) / 100) + ' ' + 'km';
+  } else {
+    output = (Math.round(length * 100) / 100) + ' ' + 'm';
+  }
+  return output;
+};
+
+var tooltip = document.createElement('div');
+tooltip.className = 'ol-tooltip ol-tooltip-measure';
+var overlay = new ol.Overlay({
+  element: tooltip,
+  offset: [0, -15],
+  positioning: 'bottom-center'
+});
+map.addOverlay(overlay);
+
+var listener;
+draw.on('drawstart', function(evt) {
+  source.clear();
+  var sketch = evt.feature;
+  var tooltipCoord = evt.coordinate;
+  listener = sketch.getGeometry().on('change', function(evt) {
+    var geom = evt.target;
+    var output = formatLength(geom);
+    tooltipCoord = geom.getLastCoordinate();
+    tooltip.innerHTML = output;
+    overlay.setPosition(tooltipCoord);
+  });
+});
+
+draw.on('drawend', function() {
+  tooltipCoord = null;
+  tooltip.innerHTML = '';
+  overlay.setPosition(null);
+  ol.Observable.unByKey(listener);
+});
+
+var measureActive = false;
+
+function toggleMeasure() {
+  if (!measureActive) {
+    // Measure feature is currently inactive, activate it
+    map.addInteraction(draw);
+    measureActive = true;
+  } else {
+    // Measure feature is currently active, deactivate it
+    map.removeInteraction(draw);
+    measureActive = false;
+    tooltip.innerHTML = '';
+    overlay.setPosition(null);
+  }
+}
+
+var measureToggleBtn = document.getElementById('measureToggle');
+measureToggleBtn.addEventListener('click', toggleMeasure);
+
   
     
     
@@ -368,39 +370,7 @@
         var description = assetData.description;
     
     
-        if (assetClass === "Education Facilities") {
-          iconStyle = new ol.style.Style({
-            image: new ol.style.Icon({
-              anchor: [0.5, 1],
-              src: 'education.png',
-              scale: 0.02
-            })
-          });
-        } else if (assetClass === "Postal & Telecom Services") {
-          iconStyle = new ol.style.Style({
-            image: new ol.style.Icon({
-              anchor: [0.5, 1],
-              src: 'postal.png',
-              scale: 0.02
-            })
-          });
-        } else if (assetClass === "Power and Energy") {
-          iconStyle = new ol.style.Style({
-            image: new ol.style.Icon({
-              anchor: [0.5, 1],
-              src: 'power.png',
-              scale: 0.06
-            })
-          });
-        } else {
-          iconStyle = new ol.style.Style({
-            image: new ol.style.Icon({
-              anchor: [0.5, 1],
-              src: 'custom.png',
-              scale: 0.04
-            })
-          });
-        }
+      
     
         var iconFeature = new ol.Feature({
           geometry: new ol.geom.Point(ol.proj.fromLonLat([longitude, latitude, altitude])),
@@ -452,12 +422,12 @@
           
     
           
-          // content += '<img src="' + assetData.assetImagesUrl + '" alt="Asset Image" class="img-fluid">';
+          content += '<img src="' + assetData.assetImagesUrl + '" alt="Asset Image" class="img-fluid">';
           content += '<p>Uploaded by : ' + assetData.uploadedBy + '</p>'+
                       '<p>Description :' + assetData.description + '</p>'+
                       '<p>Physical condition:' + assetData.physicalCondition + '</p>';
           
-          // content += '<p>Physical Condition: ' + assetData. + '</p>';
+          
     
         modalContent.innerHTML = content;
         modal.style.display = "block";
@@ -485,6 +455,48 @@
           iconPath = "education.png";
           iconScale = 0.02;
           break;
+          case "Medical and Health Facilities":
+            iconPath = "m&h.png";
+            iconScale = 0.02;
+            break;
+            case "Veterinary and Fisheries Facilities":
+              iconPath = "vat.png";
+              iconScale = 0.02;
+              break;
+              case "Water sources and structure":
+                iconPath = "water.png";
+                iconScale = 0.02;
+                break;
+                case "Transport systems and connectivity":
+                  iconPath = "transport.png";
+                  iconScale = 0.02;
+                  break;
+                  case "Administrative":
+                    iconPath = "administrative.png";
+                    iconScale = 0.02;
+                    break;
+
+                    case "Agriculture systems and allied activities":
+                      iconPath = "agraiculture.png";
+                      iconScale = 0.02;
+                      break;
+                      case "Forest Produce":
+                        iconPath = "agriculture.png";
+                        iconScale = 0.02;
+                        break;
+                        case "Minning and Quarrying":
+                          iconPath = "mining.png";
+                          iconScale = 0.02;
+                          break;
+                          case "Industries":
+                            iconPath = "industries.png";
+                            iconScale = 0.02;
+                            break;
+                            case "Bank,Insurance and Credit Societies":
+                              iconPath = "bank.png";
+                              iconScale = 0.02;
+                              break;
+                             
         case "Postal & Telecom Services":
           iconPath = "postal.png";
           iconScale = 0.04;
@@ -543,9 +555,16 @@
       vectorLayer.getSource().getFeatures().forEach(function (feature) {
         var featureAssetClass = feature.get('assetData').assetClass;
         if (
-          featureAssetClass !== "Education Facilities" &&
-          featureAssetClass !== "Postal & Telecom Services" &&
-          featureAssetClass !== "Power and Energy"
+          // featureAssetClass !== "Education Facilities" &&
+          // featureAssetClass !== "Postal & Telecom Services" &&
+          // featureAssetClass !== "Power and Energy"
+          featureAssetClass == "Other Assets" ||
+          featureAssetClass == "Sanitation and sewerage Facilities" ||
+          featureAssetClass == "General Assets" ||
+          featureAssetClass == "Extension,Training and data collection centers" 
+          
+
+
         ) {
           var currentStyle = feature.getStyle();
           var originalStyle = feature.get('originalStyle');
@@ -575,6 +594,77 @@
     document.getElementById("powerCheckbox").addEventListener("change", function() {
     togglePointsByAssetClass("Power and Energy", this.checked);
     });
+
+    //new
+
+    document.getElementById("medicalCheckbox").addEventListener("change", function() {
+      togglePointsByAssetClass("Medical and Health Facilities", this.checked);
+      });
+
+      document.getElementById("VatCheckbox").addEventListener("change", function() {
+        togglePointsByAssetClass("Veterinary and Fisheries Facilities", this.checked);
+        });
+
+        document.getElementById("WaterCheckbox").addEventListener("change", function() {
+          togglePointsByAssetClass("Water sources and structure", this.checked);
+          });
+
+          document.getElementById("transportCheckbox").addEventListener("change", function() {
+            togglePointsByAssetClass("Transport systems and connectivity", this.checked);
+            });
+
+
+            document.getElementById("GeneralCheckbox").addEventListener("change", function() {
+              togglePointsByAssetClass("General assets", this.checked);
+              });
+
+
+              document.getElementById("adminitrativeCheckbox").addEventListener("change", function() {
+                togglePointsByAssetClass("Administrative", this.checked);
+                });
+
+
+                document.getElementById("agricultureCheckbox").addEventListener("change", function() {
+                  togglePointsByAssetClass("Agriculture systems and allied activities", this.checked);
+                  });
+
+
+                  document.getElementById("ForestCheckbox").addEventListener("change", function() {
+                    togglePointsByAssetClass("Forest Produce", this.checked);
+                    });
+
+
+                    document.getElementById("MinningCheckbox").addEventListener("change", function() {
+                      togglePointsByAssetClass("Minning and Quarrying", this.checked);
+                      });
+
+
+
+                      document.getElementById("IndustriesCheckbox").addEventListener("change", function() {
+                        togglePointsByAssetClass("Industries", this.checked);
+                        });
+
+
+                        document.getElementById("BankCheckbox").addEventListener("change", function() {
+                          togglePointsByAssetClass("Bank,Insurance and Credit Societies", this.checked);
+                          });
+
+                          document.getElementById("SanitationCheckbox").addEventListener("change", function() {
+                            togglePointsByAssetClass("Sanitation and sewerage Facilitie", this.checked);
+                            });
+
+                            document.getElementById("PublicCheckbox").addEventListener("change", function() {
+                              togglePointsByAssetClass("Public/Social Services", this.checked);
+                              });
+
+                              document.getElementById("ExtansionCheckbox").addEventListener("change", function() {
+                                togglePointsByAssetClass("Extension,Training and data collection centers", this.checked);
+                                });
+
+                            
+
+
+    //
     
     // Event listener for the "Other Assets" checkbox
     document.getElementById("otherCheckbox").addEventListener("change", function () {
