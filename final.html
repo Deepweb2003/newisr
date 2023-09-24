@@ -25,6 +25,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol/dist/ol.css" type="text/css">
  <script src="https://cdn.jsdelivr.net/npm/ol/dist/ol.js"></script>
     
+   
+    
+   
+    <title>Distance and Area Measurement</title>
+    
           <script src="/ol-layerswitcher-master/dist/ol-layerswitcher.js"></script>
           <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -36,6 +41,11 @@
 <body>
   <button type="submit" id="logoutButton" class="btn btn-danger" style="position: absolute;right: 50vw;top:20px;z-index: 100;">Log Out</button>
   <div id="map">
+    <div class = "toolbar">
+      <button id = "btn1" title = "Distance Measurement" geomtype = "LineString"></button>
+      <button id = "btn2" title = "Area Measurement" geomtype = "Polygon"></button>
+      <button id = "btn3" title = "Clear Graphics"></button>
+  </div>
     
     <div id="mouse-coordinates"></div>
 
@@ -50,7 +60,7 @@
     </div>
     
   </div>
-  <button id="measureToggle">Toggle Measure</button>
+  
 
 
 
