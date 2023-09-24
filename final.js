@@ -49,7 +49,7 @@
                     'title': 'Amc',
                     layers: [
                       new ol.layer.Image({
-                        title: 'AMC Boarder',
+                        title: 'AMC Boundry',
                         source: new ol.source.ImageWMS({
                             url: 'http://15.206.28.165:8080/geoserver/amcLayers/wms',
                             params: {
@@ -110,7 +110,7 @@
     });
     
     var overlays3 = new ol.layer.Group({
-      'title': 'Natural Assets',
+      'title': 'Land Use & Land Cover',
       layers: [
      
     
@@ -422,7 +422,11 @@ measureToggleBtn.addEventListener('click', toggleMeasure);
           
     
           
-          content += '<img src="' + assetData.assetImagesUrl + '" alt="Asset Image" class="img-fluid">';
+          // content += '<img src="' + assetData.assetImagesUrl + '" alt="Asset Image" class="img-fluid">';
+            // Append images to the modal content
+    assetData.assetImagesUrl.forEach(function(imageUrl) {
+      content += '<img src="' + imageUrl + '" alt="Asset Image" class="img-fluid">';
+    });
           content += '<p>Uploaded by : ' + assetData.uploadedBy + '</p>'+
                       '<p>Description :' + assetData.description + '</p>'+
                       '<p>Physical condition:' + assetData.physicalCondition + '</p>';
@@ -455,19 +459,19 @@ measureToggleBtn.addEventListener('click', toggleMeasure);
           iconPath = "education.png";
           iconScale = 0.02;
           break;
-          case "Medical and Health Facilities":
+          case "Medical & Health Facilities":
             iconPath = "m&h.png";
             iconScale = 0.02;
             break;
-            case "Veterinary and Fisheries Facilities":
+            case "Veterinary & Fisheries Facilities":
               iconPath = "vat.png";
               iconScale = 0.02;
               break;
-              case "Water sources and structure":
+              case "Water sources & structure":
                 iconPath = "water.png";
                 iconScale = 0.02;
                 break;
-                case "Transport systems and connectivity":
+                case "Transport Systems & Connectivity":
                   iconPath = "transport.png";
                   iconScale = 0.02;
                   break;
@@ -476,7 +480,7 @@ measureToggleBtn.addEventListener('click', toggleMeasure);
                     iconScale = 0.02;
                     break;
 
-                    case "Agriculture systems and allied activities":
+                    case "Agriculture systems & allied activities":
                       iconPath = "agraiculture.png";
                       iconScale = 0.02;
                       break;
@@ -484,7 +488,7 @@ measureToggleBtn.addEventListener('click', toggleMeasure);
                         iconPath = "agriculture.png";
                         iconScale = 0.02;
                         break;
-                        case "Minning and Quarrying":
+                        case "Minning & Quarrying":
                           iconPath = "mining.png";
                           iconScale = 0.02;
                           break;
@@ -492,7 +496,7 @@ measureToggleBtn.addEventListener('click', toggleMeasure);
                             iconPath = "industries.png";
                             iconScale = 0.02;
                             break;
-                            case "Bank,Insurance and Credit Societies":
+                            case "Bank,Insurance & Credit Societies":
                               iconPath = "bank.png";
                               iconScale = 0.02;
                               break;
@@ -508,7 +512,7 @@ measureToggleBtn.addEventListener('click', toggleMeasure);
         default:
           
           iconPath = "otherasset.png"; 
-          iconScale = 0.04; 
+          iconScale = 0.15; 
           break;
       }
     
@@ -559,8 +563,8 @@ measureToggleBtn.addEventListener('click', toggleMeasure);
           // featureAssetClass !== "Postal & Telecom Services" &&
           // featureAssetClass !== "Power and Energy"
           featureAssetClass == "Other Assets" ||
-          featureAssetClass == "Sanitation and sewerage Facilities" ||
-          featureAssetClass == "General Assets" ||
+          featureAssetClass == "Sanitation & Sewerage Facilities" ||
+          featureAssetClass == "General Assets/ Facilities" ||
           featureAssetClass == "Extension,Training and data collection centers" 
           
 
@@ -598,24 +602,24 @@ measureToggleBtn.addEventListener('click', toggleMeasure);
     //new
 
     document.getElementById("medicalCheckbox").addEventListener("change", function() {
-      togglePointsByAssetClass("Medical and Health Facilities", this.checked);
+      togglePointsByAssetClass("Medical & Health Facilities", this.checked);
       });
 
       document.getElementById("VatCheckbox").addEventListener("change", function() {
-        togglePointsByAssetClass("Veterinary and Fisheries Facilities", this.checked);
+        togglePointsByAssetClass("Veterinary & Fisheries Facilities", this.checked);
         });
 
         document.getElementById("WaterCheckbox").addEventListener("change", function() {
-          togglePointsByAssetClass("Water sources and structure", this.checked);
+          togglePointsByAssetClass("Water sources & structure", this.checked);
           });
 
           document.getElementById("transportCheckbox").addEventListener("change", function() {
-            togglePointsByAssetClass("Transport systems and connectivity", this.checked);
+            togglePointsByAssetClass("Transport Systems & Connectivity", this.checked);
             });
 
 
             document.getElementById("GeneralCheckbox").addEventListener("change", function() {
-              togglePointsByAssetClass("General assets", this.checked);
+              togglePointsByAssetClass("General Assets/ Facilities", this.checked);
               });
 
 
@@ -625,7 +629,7 @@ measureToggleBtn.addEventListener('click', toggleMeasure);
 
 
                 document.getElementById("agricultureCheckbox").addEventListener("change", function() {
-                  togglePointsByAssetClass("Agriculture systems and allied activities", this.checked);
+                  togglePointsByAssetClass("Agriculture systems & allied activities", this.checked);
                   });
 
 
@@ -635,7 +639,7 @@ measureToggleBtn.addEventListener('click', toggleMeasure);
 
 
                     document.getElementById("MinningCheckbox").addEventListener("change", function() {
-                      togglePointsByAssetClass("Minning and Quarrying", this.checked);
+                      togglePointsByAssetClass("Minning & Quarrying", this.checked);
                       });
 
 
@@ -646,11 +650,11 @@ measureToggleBtn.addEventListener('click', toggleMeasure);
 
 
                         document.getElementById("BankCheckbox").addEventListener("change", function() {
-                          togglePointsByAssetClass("Bank,Insurance and Credit Societies", this.checked);
+                          togglePointsByAssetClass("Bank,Insurance & Credit Societies", this.checked);
                           });
 
                           document.getElementById("SanitationCheckbox").addEventListener("change", function() {
-                            togglePointsByAssetClass("Sanitation and sewerage Facilitie", this.checked);
+                            togglePointsByAssetClass("Sanitation & Sewerage Facilities", this.checked);
                             });
 
                             document.getElementById("PublicCheckbox").addEventListener("change", function() {
@@ -658,7 +662,7 @@ measureToggleBtn.addEventListener('click', toggleMeasure);
                               });
 
                               document.getElementById("ExtansionCheckbox").addEventListener("change", function() {
-                                togglePointsByAssetClass("Extension,Training and data collection centers", this.checked);
+                                togglePointsByAssetClass("Extension,Training & data collection centers", this.checked);
                                 });
 
                             
