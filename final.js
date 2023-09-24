@@ -10,8 +10,8 @@
        
       ],
       view: new ol.View({
-        center: ol.proj.fromLonLat([0, 0]),
-        zoom: 2
+        center: ol.proj.fromLonLat([91.286, 23.831]),
+        zoom: 13
       })
     });
     
