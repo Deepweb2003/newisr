@@ -437,7 +437,7 @@ class Draw {
 
 
 //Create map and vector layer
-let map2 = new OLMap('map', 9, [-96.6345990807462, 32.81890764151014]).map;
+// let map2 = new OLMap('map', 9, [-96.6345990807462, 32.81890764151014]).map;
 let vector_layer = new VectorLayer('Temp Layer', map).layer
 map.addLayer(vector_layer);
 
@@ -575,11 +575,11 @@ clearGraphics.onclick = clear;
     map.on('click', function(e) {
       map.forEachFeatureAtPixel(e.pixel, function(feature) {
         var assetData = feature.get('assetData');
-        var content = '<h2>' + assetData.assetClass + '</h2>' +
-          '<p>Location: ' + '</p>' +
-          '<p>Latitude: ' + assetData.assetLocation.latitude + 
-          '</p>' +'<p>Longitude: ' + assetData.assetLocation.longitude + '</p>' +
-          '<p>Altitude: ' + assetData.assetLocation.altitude + '</p>';
+        var content = '<h2>' + assetData.assetClass + '</h2>' 
+          // '<p>Location: ' + '</p>' +
+          // '<p>Latitude: ' + assetData.assetLocation.latitude + 
+          // '</p>' +'<p>Longitude: ' + assetData.assetLocation.longitude + '</p>' +
+          // '<p>Altitude: ' + assetData.assetLocation.altitude + '</p>';
     
           content += '<p>Asset Type : ' + assetData.assetSubClass + '</p>'+
                       '<p>Asset Subtype :' + assetData.assetSubClassOption + '</p>'+
@@ -675,6 +675,14 @@ clearGraphics.onclick = clear;
           iconPath = "power.png";
           iconScale = 0.15;
           break;
+          case "Sanitation & Sewerage Facilities":
+          iconPath = "sanitation.png";
+          iconScale = 0.15;
+          break;
+          case  "Extension,Training and data collection centers":
+          iconPath = "training.png";
+          iconScale = 0.15;
+          break;
         default:
           
           iconPath = "otherasset.png"; 
@@ -729,9 +737,9 @@ clearGraphics.onclick = clear;
           // featureAssetClass !== "Postal & Telecom Services" &&
           // featureAssetClass !== "Power and Energy"
           featureAssetClass == "Other Assets" ||
-          featureAssetClass == "Sanitation & Sewerage Facilities" ||
-          featureAssetClass == "General Assets/ Facilities" ||
-          featureAssetClass == "Extension,Training and data collection centers" 
+          
+          featureAssetClass == "General Assets/ Facilities" 
+         
           
 
 
