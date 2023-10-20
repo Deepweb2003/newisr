@@ -4,16 +4,7 @@
   <title>OpenLayers Map</title>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script>
-  const checkAuth= async()=>{
-    const token=localStorage.getItem('authorization');
-    axios.defaults.headers.common['authorization'] = `${localStorage.getItem('authorization')}`;
-    if(!token) window.location.href='/index.html'
-    await axios.post("https://amc-backend.onrender.com/user/check")
-    .catch((e)=>{
-      window.location.href="/index.html"
-    });
-  };
-  checkAuth();  
+    
   </script>
   <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
@@ -146,12 +137,6 @@
   </div>
   
 <script src="final.js"></script>
-<script>
-  const logoutButton=document.querySelector("#logoutButton")
-  logoutButton.addEventListener("click",(e)=>{
-          localStorage.removeItem("authorization")
-          window.location.href="index.html"
-  })
-  </script>
+
 </body>
 </html>

@@ -51,9 +51,9 @@
                       new ol.layer.Image({
                         title: 'AMC Boundry',
                         source: new ol.source.ImageWMS({
-                            // url: 'http://15.206.28.165:8080/geoserver/amcLayers/wms',
+                             url: 'http://65.0.80.143:8080/geoserver/isro/wms',
                             params: {
-                                'LAYERS': '		amcLayers:6-4-2023-1296624'
+                                'LAYERS': '	isro:6-4-2023-1296624'
                             },
                             ratio: 1,
                             serverType: 'geoserver',
@@ -79,9 +79,9 @@
               title: 'National Highway',
             
               source: new ol.source.ImageWMS({
-                  // url: 'http://13.126.232.83:8080/geoserver/amcLayers/wms',
+                   url: 'http://65.0.80.143:8080/geoserver/isro/wms',
                   params: {
-                      'LAYERS': '	amcLayers:national highways'
+                      'LAYERS': '	isro:national highways'
                   },
                   ratio: 1,
                   serverType: 'geoserver'
@@ -92,9 +92,9 @@
               title: 'State Highway',
            
               source: new ol.source.ImageWMS({
-                  // url: 'http://13.126.232.83:8080/geoserver/amcLayers/wms',
+                   url: 'http://65.0.80.143:8080/geoserver/isro/wms',
                   params: {
-                      'LAYERS': 'amcLayers:state highways'
+                      'LAYERS': '	isro:state highways'
                   },
                   ratio: 1,
                   serverType: 'geoserver'
@@ -123,9 +123,9 @@
         title: 'agricultural area',
         
         source: new ol.source.ImageWMS({
-            // url: 'http://13.126.232.83:8080/geoserver/amcLayers/wms',
+             url: 'http://65.0.80.143:8080/geoserver/isro/wms',
             params: {
-                'LAYERS': '	amcLayers:agricultural area'
+                'LAYERS': '	isro:agricultural area'
             },
             ratio: 1,
             serverType: 'geoserver'
@@ -136,9 +136,9 @@
       title: 'forest',
     
       source: new ol.source.ImageWMS({
-          // url: 'http://13.126.232.83:8080/geoserver/amcLayers/wms',
+           url: 'http://65.0.80.143:8080/geoserver/isro/wms',
           params: {
-              'LAYERS': '	amcLayers:forest'
+              'LAYERS': '	isro:forest'
           },
           ratio: 1,
           serverType: 'geoserver'
@@ -148,9 +148,9 @@
     title: 'lake',
     
     source: new ol.source.ImageWMS({
-        // url: 'http://13.126.232.83:8080/geoserver/amcLayers/wms',
+         url: 'http://65.0.80.143:8080/geoserver/isro/wms',
         params: {
-            'LAYERS': 'amcLayers:lake'
+            'LAYERS': 'isro:lake'
         },
         ratio: 1,
         serverType: 'geoserver'
@@ -159,9 +159,9 @@
     title: 'wasteland',
     
     source: new ol.source.ImageWMS({
-      // url: 'http://13.126.232.83:8080/geoserver/amcLayers/wms',
+       url: 'http://65.0.80.143:8080/geoserver/isro/wms',
       params: {
-          'LAYERS': '	amcLayers:wasteland'
+          'LAYERS': '	isro:wasteland'
       },
       ratio: 1,
       serverType: 'geoserver'
@@ -224,15 +224,14 @@
     
     
         
-    var layerSwitcher = new ol.control.LayerSwitcher({
+      var layerSwitcher = new ol.control.LayerSwitcher({
         activationMode: 'click',
         startActive: true,
       tipLabel: 'Layers', // Optional label for button
-        groupSelectStyle: 'children', 
+        groupSelectStyle: 'children', // Can be 'children' [default], 'group' or 'none'
         collapseTipLabel: 'Collapse layers',
       });
       map.addControl(layerSwitcher);
-      
       
       // measurement feature
   
