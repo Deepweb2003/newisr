@@ -145,6 +145,18 @@
       })
     }),
     new ol.layer.Image({
+      title: 'commercial area',
+    
+      source: new ol.source.ImageWMS({
+           url: 'http://65.0.80.143:8080/geoserver/isro/wms',
+          params: {
+              'LAYERS': '	isro:commercial area'
+          },
+          ratio: 1,
+          serverType: 'geoserver'
+      })
+    }),
+    new ol.layer.Image({
     title: 'lake',
     
     source: new ol.source.ImageWMS({
@@ -155,18 +167,19 @@
         ratio: 1,
         serverType: 'geoserver'
     })
-    }),new ol.layer.Image({
-    title: 'wasteland',
-    
-    source: new ol.source.ImageWMS({
-       url: 'http://65.0.80.143:8080/geoserver/isro/wms',
-      params: {
-          'LAYERS': '	isro:wasteland'
-      },
-      ratio: 1,
-      serverType: 'geoserver'
-    })
+
     }),
+    new ol.layer.Image({
+    title: 'wasteland',
+    source: new ol.source.ImageWMS({
+      url: 'http://65.0.80.143:8080/geoserver/isro/wms',
+     params: {
+         'LAYERS': 'isro:lake'
+     },
+     ratio: 1,
+     serverType: 'geoserver'
+ })
+ }),
     
     
     
