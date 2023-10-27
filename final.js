@@ -676,7 +676,7 @@ clearGraphics.onclick = clear;
           break;
           case "Sanitation & Sewerage Facilities":
           iconPath = "sanitation.png";
-          iconScale = 0.15;
+          iconScale = 0.05;
           break;
           case  "Extension,Training and data collection centers":
           iconPath = "training.png";
