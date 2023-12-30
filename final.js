@@ -46,14 +46,14 @@
         
           
           var overlays = new ol.layer.Group({
-                    'title': 'Amc',
+                    'title': 'AMC',
                     layers: [
                       new ol.layer.Image({
                         title: 'AMC Boundry',
                         source: new ol.source.ImageWMS({
-                             url: 'http://65.0.80.143:8080/geoserver/isro/wms',
+                             url: 'http://3.110.128.229:8080/geoserver/Finalisro/wms',
                             params: {
-                                'LAYERS': '	isro:6-4-2023-1296624'
+                                'LAYERS': '		Finalisro:6-4-2023-1296624'
                             },
                             ratio: 1,
                             serverType: 'geoserver',
@@ -75,32 +75,32 @@
          
     
     
-          new ol.layer.Image({
-              title: 'National Highway',
-            
-              source: new ol.source.ImageWMS({
-                   url: 'http://65.0.80.143:8080/geoserver/isro/wms',
-                  params: {
-                      'LAYERS': '	isro:national highways'
-                  },
-                  ratio: 1,
-                  serverType: 'geoserver'
-              })
-          }),
+         
     
           new ol.layer.Image({
-              title: 'State Highway',
+              title: 'Other Roads',
            
               source: new ol.source.ImageWMS({
-                   url: 'http://65.0.80.143:8080/geoserver/isro/wms',
+                   url: 'http://3.110.128.229:8080/geoserver/Finalisro/wms',
                   params: {
-                      'LAYERS': '	isro:state highways'
+                      'LAYERS': '		Finalisro:state highways'
                   },
                   ratio: 1,
                   serverType: 'geoserver'
               })
           }),
-       
+          new ol.layer.Image({
+            title: 'National Highway',
+          
+            source: new ol.source.ImageWMS({
+                 url: 'http://3.110.128.229:8080/geoserver/Finalisro/wms',
+                params: {
+                    'LAYERS': '		Finalisro:national highways'
+                },
+                ratio: 1,
+                serverType: 'geoserver'
+            })
+        }),
         
     
     
@@ -123,9 +123,9 @@
         title: 'agricultural area',
         
         source: new ol.source.ImageWMS({
-             url: 'http://65.0.80.143:8080/geoserver/isro/wms',
+             url: 'http://3.110.128.229:8080/geoserver/Finalisro/wms',
             params: {
-                'LAYERS': '	isro:agricultural area'
+                'LAYERS': '		Finalisro:agricultural area'
             },
             ratio: 1,
             serverType: 'geoserver'
@@ -136,9 +136,9 @@
       title: 'forest',
     
       source: new ol.source.ImageWMS({
-           url: 'http://65.0.80.143:8080/geoserver/isro/wms',
+           url: 'http://3.110.128.229:8080/geoserver/Finalisro/wms',
           params: {
-              'LAYERS': '	isro:forest'
+              'LAYERS': '		Finalisro:forest'
           },
           ratio: 1,
           serverType: 'geoserver'
@@ -148,9 +148,9 @@
       title: 'commercial area',
     
       source: new ol.source.ImageWMS({
-           url: 'http://65.0.80.143:8080/geoserver/isro/wms',
+           url: 'http://3.110.128.229:8080/geoserver/Finalisro/wms',
           params: {
-              'LAYERS': '	isro:commercial area'
+              'LAYERS': '		Finalisro:commercial area'
           },
           ratio: 1,
           serverType: 'geoserver'
@@ -160,9 +160,9 @@
     title: 'lake',
     
     source: new ol.source.ImageWMS({
-         url: 'http://65.0.80.143:8080/geoserver/isro/wms',
+         url: 'http://3.110.128.229:8080/geoserver/Finalisro/wms',
         params: {
-            'LAYERS': 'isro:lake'
+            'LAYERS': '	Finalisro:lake'
         },
         ratio: 1,
         serverType: 'geoserver'
@@ -172,9 +172,9 @@
     new ol.layer.Image({
     title: 'wasteland',
     source: new ol.source.ImageWMS({
-      url: 'http://65.0.80.143:8080/geoserver/isro/wms',
+      url: 'http://3.110.128.229:8080/geoserver/Finalisro/wms',
      params: {
-         'LAYERS': 'isro:lake'
+         'LAYERS': 'Finalisro:wasteland'
      },
      ratio: 1,
      serverType: 'geoserver'
