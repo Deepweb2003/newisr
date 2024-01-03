@@ -450,8 +450,8 @@ class Draw {
 
 //Create map and vector layer
 // let map2 = new OLMap('map', 9, [-96.6345990807462, 32.81890764151014]).map;
-let vector_layer = new VectorLayer('Temp Layer', map).layer
-map.addLayer(vector_layer);
+// let vector_layer = new VectorLayer('Temp Layer', map).layer
+// map.addLayer(vector_layer);
 
 
 //Add Interaction to map depending on your selection
@@ -605,7 +605,7 @@ clearGraphics.onclick = clear;
     assetData.assetImagesUrl.forEach(function(imageUrl) {
       content += '<img src="' + imageUrl + '" alt="Asset Image" class="img-fluid">';
     });
-          content += '<p>Uploaded by : ' + assetData.uploadedBy + '</p>'+
+          content += 
                       '<p>Description :' + assetData.description + '</p>'+
                       '<p>Physical condition:' + assetData.physicalCondition + '</p>';
           
@@ -635,71 +635,71 @@ clearGraphics.onclick = clear;
       switch (assetClass) {
         case "Education Facilities":
           iconPath = "education.png";
-          iconScale = 0.05;
+          iconScale = 0.03;
           break;
           case "Medical & Health Facilities":
             iconPath = "m&h.png";
-            iconScale = 0.05;
+            iconScale = 0.03;
             break;
             case "Veterinary & Fisheries Facilities":
               iconPath = "vat.png";
-              iconScale = 0.05;
+              iconScale = 0.03;
               break;
-              case "Water sources & structure":
+              case "Water Sources & Structures":
                 iconPath = "water.png";
-                iconScale = 0.05;
+                iconScale = 0.03;
                 break;
                 case "Transport Systems & Connectivity":
                   iconPath = "transport.png";
-                  iconScale = 0.05;
+                  iconScale = 0.03;
                   break;
                   case "Administrative":
                     iconPath = "administrative.png";
-                    iconScale = 0.05;
+                    iconScale = 0.03;
                     break;
 
                     case "Agriculture systems & allied activities":
                       iconPath = "agraiculture.png";
-                      iconScale = 0.05;
+                      iconScale = 0.03;
                       break;
                       case "Forest Produce":
                         iconPath = "agriculture.png";
-                        iconScale = 0.05;
+                        iconScale = 0.03;
                         break;
                         case "Minning & Quarrying":
                           iconPath = "mining.png";
-                          iconScale = 0.05;
+                          iconScale = 0.03;
                           break;
                           case "Industries":
                             iconPath = "industries.png";
-                            iconScale = 0.05;
+                            iconScale = 0.03;
                             break;
-                            case "Bank,Insurance & Credit Societies":
+                            case "Banks, Insurance & Credit Societies":
                               iconPath = "bank.png";
-                              iconScale = 0.05;
+                              iconScale = 0.03;
                               break;
                              
         case "Postal & Telecom Services":
           iconPath = "postal.png";
-          iconScale = 0.14;
+          iconScale = 0.03;
           break;
         case "Power and Energy":
           iconPath = "power.png";
-          iconScale = 0.15;
+          iconScale = 0.03;
           break;
           case "Sanitation & Sewerage Facilities":
           iconPath = "sanitation.png";
-          iconScale = 0.05;
+          iconScale = 0.03;
           break;
           case  "Extension,Training and data collection centers":
           iconPath = "training.png";
-          iconScale = 0.15;
+          iconScale = 0.03;
           break;
         default:
           
-          iconPath = "otherasset.png"; 
-          iconScale = 0.15; 
-          break;
+          // iconPath = "otherasset.png"; 
+          // iconScale = 0.03; 
+          // break;
       }
     
       return new ol.style.Style({
@@ -796,7 +796,7 @@ clearGraphics.onclick = clear;
         });
 
         document.getElementById("WaterCheckbox").addEventListener("change", function() {
-          togglePointsByAssetClass("Water sources & structure", this.checked);
+          togglePointsByAssetClass("Water Sources & Structures", this.checked);
           });
 
           document.getElementById("transportCheckbox").addEventListener("change", function() {
@@ -836,7 +836,7 @@ clearGraphics.onclick = clear;
 
 
                         document.getElementById("BankCheckbox").addEventListener("change", function() {
-                          togglePointsByAssetClass("Bank,Insurance & Credit Societies", this.checked);
+                          togglePointsByAssetClass("Banks, Insurance & Credit Societies", this.checked);
                           });
 
                           document.getElementById("SanitationCheckbox").addEventListener("change", function() {
