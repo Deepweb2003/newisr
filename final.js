@@ -190,61 +190,136 @@
          
         
         
-        
-        map.addLayer(base_maps);
-        map.addLayer(overlays);
-        map.addLayer(overlays2);
-        map.addLayer(overlays3);
-       
+            
+    map.addLayer(base_maps);
+    map.addLayer(overlays);
+    map.addLayer(overlays2);
+    map.addLayer(overlays3);
+   
+
+// ...
+
+
+// proximity control
+var mouseCoordinatesControl = new ol.control.Control({
+  element: document.getElementById('mouse-coordinates'),
+});
+
+// Add the control to the map
+map.addControl(mouseCoordinatesControl);
+
+// Function to update the mouse coordinates when the pointer moves
+function updateMouseCoordinates(evt) {
+  var coords = ol.proj.toLonLat(evt.coordinate);
+  var lat = coords[1];
+  var lon = coords[0];
+  document.getElementById('mouse-coordinates').innerText =
+    'Latitude: ' + lat.toFixed(6) + ', Longitude: ' + lon.toFixed(6);
+}
+
+map.on('pointermove', function (evt) {
+  updateMouseCoordinates(evt);
+});
+
+// ...
+
+  
+  var full_sc = new ol.control.FullScreen({label:'F'});
+  map.addControl(full_sc);
+  
+  var zoom = new ol.control.Zoom({zoomInLabel:'+', zoomOutLabel:'-'});
+  map.addControl(zoom);
+  
+  var slider = new ol.control.ZoomSlider();
+  map.addControl(slider);
+  
+
+
+
     
-    // ...
-    
-    
-    // proximity control
-    var mouseCoordinatesControl = new ol.control.Control({
-      element: document.getElementById('mouse-coordinates'),
-    });
-    
-    // Add the control to the map
-    map.addControl(mouseCoordinatesControl);
-    
-    // Function to update the mouse coordinates when the pointer moves
-    function updateMouseCoordinates(evt) {
-      var coords = ol.proj.toLonLat(evt.coordinate);
-      var lat = coords[1];
-      var lon = coords[0];
-      document.getElementById('mouse-coordinates').innerText =
-        'Latitude: ' + lat.toFixed(6) + ', Longitude: ' + lon.toFixed(6);
-    }
-    
-    map.on('pointermove', function (evt) {
-      updateMouseCoordinates(evt);
-    });
-    
-    // ...
-    
-      
-      var full_sc = new ol.control.FullScreen({label:'F'});
-      map.addControl(full_sc);
-      
-      var zoom = new ol.control.Zoom({zoomInLabel:'+', zoomOutLabel:'-'});
-      map.addControl(zoom);
-      
-      var slider = new ol.control.ZoomSlider();
-      map.addControl(slider);
-      
-    
-    
-    
-        
-      var layerSwitcher = new ol.control.LayerSwitcher({
-        activationMode: 'click',
-        startActive: true,
-      tipLabel: 'Layers', // Optional label for button
-        groupSelectStyle: 'children', // Can be 'children' [default], 'group' or 'none'
-        collapseTipLabel: 'Collapse layers',
-      });
-      map.addControl(layerSwitcher);
+var layerSwitcher = new ol.control.LayerSwitcher({
+    activationMode: 'click',
+    startActive: true,
+  tipLabel: 'Layers', // Optional label for button
+    groupSelectStyle: 'children', 
+    collapseTipLabel: 'Collapse layers',
+  });
+  map.addControl(layerSwitcher);
+  
+  
+  // measurement feature
+
+// ...
+//measure
+
+
+
+// measurement new 
+
+
+/*
+Create and Render map on div with zoom and center
+*/
+class OLMap {
+//Constructor accepts html div id, zoom level and center coordinaes
+constructor(map_div, zoom, center) {
+this.map = new ol.Map({
+  target: map_div,
+  layers: [
+    new ol.layer.Tile({
+      source: new ol.source.OSM()
+    })
+  ],
+  view: new ol.View({
+    center: ol.proj.fromLonLat(center),
+    zoom: zoom
+  })
+});
+}
+}
+
+
+/*
+Create Vector Layer
+*/
+class VectorLayer{
+//Constructor accepts title of vector layer and map object
+constructor(title, map) {
+this.layer = new ol.layer.Vector({
+  title: title,      
+  source: new ol.source.Vector({
+    projection:map.getView().projection
+  }),
+  style: new ol.style.Style({        
+    stroke: new ol.style.Stroke({
+      color: '#0e97fa',
+      width:4
+    })
+  })
+});
+}
+}
+
+
+/*
+Create overlay
+*/
+class Overlay {
+//Contrctor accepts map object, overlay html element, overlay offset, overlay positioning and overlay class
+constructor(map, element = document.getElementById("popup"), offset = [0, -15], positioning = 'bottom-center',   className = 'ol-tooltip-measure ol-tooltip .ol-tooltip-static') {
+this.map = map;
+this.overlay = new ol.Overlay({
+  element: element,
+  offset: offset,
+  positioning: positioning,
+  className: className
+});
+this.overlay.setPosition([0,0]);
+this.overlay.element.style.display = 'block';      
+this.map.addOverlay(this.overlay);    
+
+}
+}
       
       // measurement feature
   
@@ -255,73 +330,7 @@
   
     // measurement new 
    
-    
-    /*
-Create and Render map on div with zoom and center
-*/
-class OLMap {
-  //Constructor accepts html div id, zoom level and center coordinaes
-  constructor(map_div, zoom, center) {
-    this.map = new ol.Map({
-      target: map_div,
-      layers: [
-        new ol.layer.Tile({
-          source: new ol.source.OSM()
-        })
-      ],
-      view: new ol.View({
-        center: ol.proj.fromLonLat(center),
-        zoom: zoom
-      })
-    });
-  }
-}
-
-
-/*
-Create Vector Layer
-*/
-class VectorLayer{
-  //Constructor accepts title of vector layer and map object
-  constructor(title, map) {
-    this.layer = new ol.layer.Vector({
-      title: title,      
-      source: new ol.source.Vector({
-        projection:map.getView().projection
-      }),
-      style: new ol.style.Style({        
-        stroke: new ol.style.Stroke({
-          color: '#0e97fa',
-          width:4
-        })
-      })
-    });
-  }
-}
-
-
-/*
-Create overlay
-*/
-class Overlay {
-  //Contrctor accepts map object, overlay html element, overlay offset, overlay positioning and overlay class
-  constructor(map, element = document.getElementById("popup"), offset = [0, -15], positioning = 'bottom-center',   className = 'ol-tooltip-measure ol-tooltip .ol-tooltip-static') {
-    this.map = map;
-    this.overlay = new ol.Overlay({
-      element: element,
-      offset: offset,
-      positioning: positioning,
-      className: className
-    });
-    this.overlay.setPosition([0,0]);
-    this.overlay.element.style.display = 'block';      
-    this.map.addOverlay(this.overlay);    
-    
-  }
-}
-
-
-/*
+  /*
 Create a Draw interaction for LineString and Polygon
 */
 class Draw {  
@@ -450,8 +459,8 @@ class Draw {
 
 //Create map and vector layer
 // let map2 = new OLMap('map', 9, [-96.6345990807462, 32.81890764151014]).map;
-// let vector_layer = new VectorLayer('Temp Layer', map).layer
-// map.addLayer(vector_layer);
+let vector_layer = new VectorLayer('Temp Layer', map).layer
+map.addLayer(vector_layer);
 
 
 //Add Interaction to map depending on your selection
