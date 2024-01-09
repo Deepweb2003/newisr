@@ -51,7 +51,7 @@
                       new ol.layer.Image({
                         title: 'AMC Boundry',
                         source: new ol.source.ImageWMS({
-                             url: 'http://3.110.128.229:8080/geoserver/Finalisro/wms',
+                             url: 'http://65.0.216.158:8080/geoserver/Finalisro/wms',
                             params: {
                                 'LAYERS': '		Finalisro:6-4-2023-1296624'
                             },
@@ -81,7 +81,7 @@
               title: 'Other Roads',
            
               source: new ol.source.ImageWMS({
-                   url: 'http://3.110.128.229:8080/geoserver/Finalisro/wms',
+                   url: 'http://65.0.216.158:8080/geoserver/Finalisro/wms',
                   params: {
                       'LAYERS': '		Finalisro:state highways'
                   },
@@ -93,7 +93,7 @@
             title: 'National Highway',
           
             source: new ol.source.ImageWMS({
-                 url: 'http://3.110.128.229:8080/geoserver/Finalisro/wms',
+                 url: 'http://65.0.216.158:8080/geoserver/Finalisro/wms',
                 params: {
                     'LAYERS': '		Finalisro:national highways'
                 },
@@ -123,7 +123,7 @@
         title: 'agricultural area',
         
         source: new ol.source.ImageWMS({
-             url: 'http://3.110.128.229:8080/geoserver/Finalisro/wms',
+             url: 'http://65.0.216.158:8080/geoserver/Finalisro/wms',
             params: {
                 'LAYERS': '		Finalisro:agricultural area'
             },
@@ -136,7 +136,7 @@
       title: 'forest',
     
       source: new ol.source.ImageWMS({
-           url: 'http://3.110.128.229:8080/geoserver/Finalisro/wms',
+           url: 'http://65.0.216.158:8080/geoserver/Finalisro/wms',
           params: {
               'LAYERS': '		Finalisro:forest'
           },
@@ -148,7 +148,7 @@
       title: 'commercial area',
     
       source: new ol.source.ImageWMS({
-           url: 'http://3.110.128.229:8080/geoserver/Finalisro/wms',
+           url: 'http://65.0.216.158:8080/geoserver/Finalisro/wms',
           params: {
               'LAYERS': '		Finalisro:commercial area'
           },
@@ -160,7 +160,7 @@
     title: 'lake',
     
     source: new ol.source.ImageWMS({
-         url: 'http://3.110.128.229:8080/geoserver/Finalisro/wms',
+         url: 'http://65.0.216.158:8080/geoserver/Finalisro/wms',
         params: {
             'LAYERS': '	Finalisro:lake'
         },
@@ -172,7 +172,7 @@
     new ol.layer.Image({
     title: 'wasteland',
     source: new ol.source.ImageWMS({
-      url: 'http://3.110.128.229:8080/geoserver/Finalisro/wms',
+      url: 'http://65.0.216.158:8080/geoserver/Finalisro/wms',
      params: {
          'LAYERS': 'Finalisro:wasteland'
      },
