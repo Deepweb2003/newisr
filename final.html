@@ -47,6 +47,8 @@
       <button id = "btn1" title = "Distance Measurement" geomtype = "LineString"></button>
       <button id = "btn2" title = "Area Measurement" geomtype = "Polygon"></button>
       <button id = "btn3" title = "Clear Graphics"></button>
+      
+      
   </div>
     
     <div id="mouse-coordinates"></div>
@@ -146,6 +148,12 @@
       </div>
     </div>
   </div>
+
+  <div class="btn routing">
+    <button onclick="redirectToPage()" title="Routing">
+      <img src="routing.png" style="width: 32px; height: 32px;">
+    </button>
+  </div>
   <script>
   const logoutButton=document.querySelector("#logoutButton")
   logoutButton.addEventListener("click",(e)=>{
@@ -154,6 +162,13 @@
   })
   </script>
 <script src="final.js"></script>
+<script>
+  function redirectToPage() {
+
+    window.location.href = 'routing.html';
+    //window.open('routing.html', '_blank');
+  }
+</script>
 
 </body>
 </html>

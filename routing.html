@@ -1,0 +1,95 @@
+
+
+<html>
+<head>
+<meta name="description" content="DevLabs - Get driving directions">
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>ArcGIS Developer Guide: Find a route</title>
+  <style>
+    html, body, #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+    .esri-view .esri-directions {
+
+      max-height:calc(100vh - 90px) !important;
+    }
+
+  </style>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css">
+  <script src="https://js.arcgis.com/4.28"></script>
+  <script>
+    require([
+        "esri/config",
+        "esri/Map",
+        "esri/views/MapView",
+        "esri/widgets/Directions",
+        "esri/symbols/SimpleMarkerSymbol",
+        "esri/layers/RouteLayer",
+        "esri/widgets/Expand"
+      ],(esriConfig, Map, MapView, Directions, SimpleMarkerSymbol, RouteLayer,Expand)=> {
+
+      esriConfig.apiKey = "AAPK7f4b65f1451c4d09bde046bb43c018e0hZE_1eYgmloEhr9RRsg1zWQCPCDQo7PV9RhgMh3rpd5IFz-67ORXXcGxTCGhqrvU";
+
+      const routeLayer = new RouteLayer({
+        url: "https://route-api.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World/"
+      });
+
+      const map = new Map({
+        basemap: "arcgis-navigation",
+        layers: [routeLayer]
+      });
+
+      const view = new MapView({
+        container: "viewDiv",
+        map: map,
+        center: [-118.24532,34.05398],
+        zoom: 12,
+        constraints: {
+          snapToZoom: false
+        }
+      });
+
+      const directions = new Directions({
+        view: view,
+        layer:routeLayer
+      });
+
+     view.ui.add(new Expand({
+      view:view,
+      content:directions,
+      expanded:true,
+      }), "top-right");
+
+    //  function createStopSymbol(outline, fill, size) {
+    //   return new SimpleMarkerSymbol({
+    //     style: "circle",
+    //     size: size,
+    //     outline: {
+    //       width: "2px",
+    //       color: outline
+    //     },
+    //     color: fill
+    //   });
+    // }
+
+    //  // Stop symbols
+    //   directions.routeStopSymbol.first = createStopSymbol("black","white","12px");
+    //   directions.routeStopSymbol.middle = createStopSymbol("grey","white","10px");
+    //   directions.routeStopSymbol.last = createStopSymbol("white","black","12px");
+
+    // // Route symbol
+    //   directions.directionsLine.width = "5";
+    //   directions.directionsLine.color = [50,150,255,.75];
+    //   directions.directionsLine.style = "solid";
+
+    });
+  </script>
+</head>
+<body>
+  <div id="viewDiv"></div>
+</body>
+</html>

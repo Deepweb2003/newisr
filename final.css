@@ -16,6 +16,7 @@ html,body {
     #mouse-coordinates{
       text-align: end;
       margin: 30px;
+      color: #ffcc33;
     }
 	  
 	  .ol-mouse-position{
@@ -136,6 +137,14 @@ top: 90%;
 left:10px;
   
 }
+.routing{
+  top:-2vh;
+  left:27vh;
+  position: relative;  
+  }
+
+  
+
 
 .custom-tooltip {
   background-color: rgba(0, 0, 0, 0.7);
@@ -190,6 +199,12 @@ background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqa
 background-repeat: no-repeat;
 background-size: contain;
 background-color: white;
+}
+ #btn4 {
+ 
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: white;
 }
 
 .ol-tooltip {
