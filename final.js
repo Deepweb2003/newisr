@@ -460,7 +460,7 @@ class Draw {
 //Create map and vector layer
 // let map2 = new OLMap('map', 9, [-96.6345990807462, 32.81890764151014]).map;
 let vector_layer = new VectorLayer('Temp Layer', map).layer
-map.addLayer(vector_layer);
+// map.addLayer(vector_layer);
 
 
 //Add Interaction to map depending on your selection
