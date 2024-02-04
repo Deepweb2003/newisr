@@ -4,7 +4,6 @@
   <meta name="description" content="DevLabs - Get driving directions">
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-  <link rel="stylesheet" href="routing.css">
   <title>ArcGIS Developer Guide: Find a route</title>
   <style>
     html, body, #viewDiv {
@@ -17,11 +16,6 @@
     .esri-view .esri-directions {
       max-height: calc(100vh - 90px) !important;
     }
-
-    .esri-directions__save-button, .esri-directions__save-as-button, .esri-directions__add-stop-button {
-    display: none;
-    margin-inline-end: 5px;
-}
 
     #mapButton {
       position: absolute;
@@ -87,23 +81,18 @@
       });
 
       view.ui.add(toggle, "bottom-right");
-    
 
+      // Add a button to the map
+      const mapButton = document.createElement('button');
+      mapButton.textContent = 'Back';
+      mapButton.id = 'mapButton';
 
-// Create a button element for the "Back" button
-const mapButton = document.createElement('button');
-mapButton.textContent = 'Home'; 
-mapButton.id = 'mapButton'; 
+      mapButton.addEventListener('click', function() {
+        // Handle button click event
+        console.log('Button clicked!');
+      });
 
-
-mapButton.addEventListener('click', function() {
-   
-    window.location.href = 'final.html';
-});
-
-
-view.ui.add(mapButton, 'top-left');
-
+      view.ui.add(mapButton, 'top-left');
 
     });
   </script>
