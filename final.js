@@ -53,7 +53,7 @@
                         source: new ol.source.ImageWMS({
                              url: 'http://65.0.216.158:8080/geoserver/Finalisro/wms',
                             params: {
-                                'LAYERS': '		Finalisro:6-4-2023-1296624'
+                                'LAYERS': '		Finalisro:Border_amc'
                             },
                             ratio: 1,
                             serverType: 'geoserver',
@@ -83,7 +83,7 @@
               source: new ol.source.ImageWMS({
                    url: 'http://65.0.216.158:8080/geoserver/Finalisro/wms',
                   params: {
-                      'LAYERS': '		Finalisro:state highways'
+                      'LAYERS': '		Finalisro:state highways_amc'
                   },
                   ratio: 1,
                   serverType: 'geoserver'
@@ -95,7 +95,7 @@
             source: new ol.source.ImageWMS({
                  url: 'http://65.0.216.158:8080/geoserver/Finalisro/wms',
                 params: {
-                    'LAYERS': '		Finalisro:national highways'
+                    'LAYERS': '		Finalisro:national highways_amc'
                 },
                 ratio: 1,
                 serverType: 'geoserver'
@@ -125,7 +125,7 @@
         source: new ol.source.ImageWMS({
              url: 'http://65.0.216.158:8080/geoserver/Finalisro/wms',
             params: {
-                'LAYERS': '		Finalisro:agricultural area'
+                'LAYERS': '		Finalisro:agricultural area_amc'
             },
             ratio: 1,
             serverType: 'geoserver'
@@ -138,7 +138,7 @@
       source: new ol.source.ImageWMS({
            url: 'http://65.0.216.158:8080/geoserver/Finalisro/wms',
           params: {
-              'LAYERS': '		Finalisro:forest'
+              'LAYERS': '		Finalisro:forest_amc'
           },
           ratio: 1,
           serverType: 'geoserver'
@@ -150,7 +150,7 @@
       source: new ol.source.ImageWMS({
            url: 'http://65.0.216.158:8080/geoserver/Finalisro/wms',
           params: {
-              'LAYERS': '		Finalisro:commercial area'
+              'LAYERS': '		Finalisro:commercial area_amc'
           },
           ratio: 1,
           serverType: 'geoserver'
@@ -162,7 +162,7 @@
     source: new ol.source.ImageWMS({
          url: 'http://65.0.216.158:8080/geoserver/Finalisro/wms',
         params: {
-            'LAYERS': '	Finalisro:lake'
+            'LAYERS': '	Finalisro:lake_amc'
         },
         ratio: 1,
         serverType: 'geoserver'
@@ -174,7 +174,7 @@
     source: new ol.source.ImageWMS({
       url: 'http://65.0.216.158:8080/geoserver/Finalisro/wms',
      params: {
-         'LAYERS': 'Finalisro:wasteland'
+         'LAYERS': 'Finalisro:wasteland_amc'
      },
      ratio: 1,
      serverType: 'geoserver'
