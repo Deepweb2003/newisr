@@ -656,11 +656,11 @@ clearGraphics.onclick = clear;
               break;
               case "Water Sources & Structures":
                 iconPath = "water.png";
-                iconScale = 0.03;
+                iconScale = 0.04;
                 break;
                 case "Transport Systems & Connectivity":
                   iconPath = "transport.png";
-                  iconScale = 0.03;
+                  iconScale = 0.05;
                   break;
                   case "Administrative":
                     iconPath = "administrative.png";
@@ -685,30 +685,34 @@ clearGraphics.onclick = clear;
                             break;
                             case "Banks, Insurance & Credit Societies":
                               iconPath = "bank.png";
-                              iconScale = 0.03;
+                              iconScale = 0.06;
                               break;
                              
         case "Postal & Telecom Services":
           iconPath = "postal.png";
-          iconScale = 0.03;
+          iconScale = 0.05;
           break;
         case "Power and Energy":
-          iconPath = "power.png";
-          iconScale = 0.03;
+          iconPath = "pwr.png";
+          iconScale = 0.06;
           break;
           case "Sanitation & Sewerage Facilities":
           iconPath = "sanitation.png";
-          iconScale = 0.03;
+          iconScale = 0.05;
           break;
           case  "Extension,Training and data collection centers":
           iconPath = "training.png";
           iconScale = 0.03;
           break;
+          case  "Forest Produce":
+            iconPath = "forest.png";
+            iconScale = 0.03;
+            break;
         default:
           
-          // iconPath = "otherasset.png"; 
-          // iconScale = 0.03; 
-          // break;
+          iconPath = "otherasset.png"; 
+          iconScale = 0.14; 
+          break;
       }
     
       return new ol.style.Style({
@@ -790,7 +794,7 @@ clearGraphics.onclick = clear;
     togglePointsByAssetClass("Postal & Telecom Services", this.checked);
     });
     
-    document.getElementById("powerCheckbox").addEventListener("change", function() {
+    document.getElementById("powerbox").addEventListener("change", function() {
     togglePointsByAssetClass("Power and Energy", this.checked);
     });
 
