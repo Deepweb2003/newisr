@@ -557,7 +557,9 @@ clearGraphics.onclick = clear;
         var description = assetData.description;
     
     
-      
+        if (assetData.assetClass === "Extension, Training & Data Collection Centres") {
+          console.log(assetData);
+      }
        
         var iconFeature = new ol.Feature({
           geometry: new ol.geom.Point(ol.proj.fromLonLat([longitude, latitude, altitude])),
@@ -700,9 +702,9 @@ clearGraphics.onclick = clear;
           iconPath = "sanitation.png";
           iconScale = 0.05;
           break;
-          case  "Extension,Training and data collection centers":
+          case  "Extension, Training & Data Collection Centres":
           iconPath = "training.png";
-          iconScale = 0.03;
+          iconScale = 0.07;
           break;
           case  "Forest Produce":
             iconPath = "forest.png";
@@ -861,7 +863,7 @@ clearGraphics.onclick = clear;
                               });
 
                               document.getElementById("ExtansionCheckbox").addEventListener("change", function() {
-                                togglePointsByAssetClass("Extension,Training & data collection centers", this.checked);
+                                togglePointsByAssetClass("Extension, Training & Data Collection Centres", this.checked);
                                 });
 
                                 
