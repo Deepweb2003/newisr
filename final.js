@@ -558,7 +558,7 @@ clearGraphics.onclick = clear;
     
     
       
-    
+       
         var iconFeature = new ol.Feature({
           geometry: new ol.geom.Point(ol.proj.fromLonLat([longitude, latitude, altitude])),
           name: assetData.assetName,
@@ -864,6 +864,8 @@ clearGraphics.onclick = clear;
                                 togglePointsByAssetClass("Extension,Training & data collection centers", this.checked);
                                 });
 
+                                
+
                             
 
 
@@ -873,3 +875,6 @@ clearGraphics.onclick = clear;
     document.getElementById("otherCheckbox").addEventListener("change", function () {
       toggleOtherAssets(this.checked);
     });
+
+
+    
