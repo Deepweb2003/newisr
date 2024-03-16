@@ -671,10 +671,10 @@ clearGraphics.onclick = clear;
 
                     case "Agriculture systems & allied activities":
                       iconPath = "agraiculture.png";
-                      iconScale = 0.03;
+                      iconScale = 0.05;
                       break;
                       case "Forest Produce":
-                        iconPath = "agriculture.png";
+                        iconPath = "forest.png";
                         iconScale = 0.03;
                         break;
                         case "Minning & Quarrying":
@@ -830,7 +830,7 @@ clearGraphics.onclick = clear;
 
 
                 document.getElementById("agricultureCheckbox").addEventListener("change", function() {
-                  togglePointsByAssetClass("Agriculture systems & allied activities", this.checked);
+                  togglePointsByAssetClass("Agriculture System & Allied Activities", this.checked);
                   });
 
 
