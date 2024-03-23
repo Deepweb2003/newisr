@@ -598,10 +598,9 @@ clearGraphics.onclick = clear;
     map.on('click', function(e) {
       map.forEachFeatureAtPixel(e.pixel, function(feature) {
         var assetData = feature.get('assetData');
-        var content = '<h2>' + assetData.assetClass + '</h2>' 
-          // '<p>Location: ' + '</p>' +
-          // '<p>Latitude: ' + assetData.assetLocation.latitude + 
-          // '</p>' +'<p>Longitude: ' + assetData.assetLocation.longitude + '</p>' +
+        var content = '<h2>' + assetData.assetClass + '</h2>'+ 
+          '<p>Latitude: ' + assetData.assetLocation.latitude + 
+          '</p>' +'<p>Longitude: ' + assetData.assetLocation.longitude + '</p>' ;
           // '<p>Altitude: ' + assetData.assetLocation.altitude + '</p>';
     
           content += '<p>Asset Type : ' + assetData.assetSubClass + '</p>'+
