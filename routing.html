@@ -56,8 +56,8 @@
       });
 
       const map = new Map({
-        basemap: "arcgis-navigation",
-        layers: [routeLayer]
+        basemap: "satellite", // Set default basemap to satellite
+    layers: [routeLayer]
       });
 
       const view = new MapView({
@@ -83,7 +83,7 @@
 
       const toggle = new BasemapToggle({
         view: view,
-        nextBasemap: "satellite" // Toggle to satellite basemap
+        nextBasemap: "arcgis-navigation" // Toggle to satellite basemap
       });
 
       view.ui.add(toggle, "bottom-right");
