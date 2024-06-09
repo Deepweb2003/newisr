@@ -1,4 +1,4 @@
-var waterReport='<p>Water Report :<a href="Water Data.htm" target="_blank">Click to view Live Report</a></p>'
+var waterReport='<p>Water Report :<a href="Water Data.htm" target="_blank">Click to view report</a></p>'
 var geoserverLink='65.0.216.158'
 // // Initialize the map
 
