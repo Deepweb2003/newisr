@@ -1,5 +1,6 @@
-
-    // // Initialize the map
+var waterReport='<p>Water Report :<a href="Water Data.htm" target="_blank">Click to view Live Report</a></p>'
+var geoserverLink='65.0.216.158'
+// // Initialize the map
 
     var map = new ol.Map({
       target: 'map',
@@ -51,7 +52,7 @@
                       new ol.layer.Image({
                         title: 'AMC Boundry',
                         source: new ol.source.ImageWMS({
-                             url: 'http://65.0.216.158:8080/geoserver/Finalisro/wms',
+                             url: 'http://'+geoserverLink+':8080/geoserver/Finalisro/wms',
                             params: {
                                 'LAYERS': '		Finalisro:Border_amc'
                             },
@@ -81,7 +82,7 @@
               title: 'Other Roads',
            
               source: new ol.source.ImageWMS({
-                   url: 'http://65.0.216.158:8080/geoserver/Finalisro/wms',
+                   url: 'http://'+geoserverLink+':8080/geoserver/Finalisro/wms',
                   params: {
                       'LAYERS': '		Finalisro:state highways_amc'
                   },
@@ -93,7 +94,7 @@
             title: 'National Highway',
           
             source: new ol.source.ImageWMS({
-                 url: 'http://65.0.216.158:8080/geoserver/Finalisro/wms',
+                 url: 'http://'+geoserverLink+':8080/geoserver/Finalisro/wms',
                 params: {
                     'LAYERS': '		Finalisro:national highways_amc'
                 },
@@ -123,7 +124,7 @@
         title: 'agricultural area',
         
         source: new ol.source.ImageWMS({
-             url: 'http://65.0.216.158:8080/geoserver/Finalisro/wms',
+             url: 'http://'+geoserverLink+':8080/geoserver/Finalisro/wms',
             params: {
                 'LAYERS': '		Finalisro:agricultural area_amc'
             },
@@ -136,7 +137,7 @@
       title: 'forest',
     
       source: new ol.source.ImageWMS({
-           url: 'http://65.0.216.158:8080/geoserver/Finalisro/wms',
+           url: 'http://'+geoserverLink+':8080/geoserver/Finalisro/wms',
           params: {
               'LAYERS': '		Finalisro:forest_amc'
           },
@@ -148,7 +149,7 @@
       title: 'commercial area',
     
       source: new ol.source.ImageWMS({
-           url: 'http://65.0.216.158:8080/geoserver/Finalisro/wms',
+           url: 'http://'+geoserverLink+':8080/geoserver/Finalisro/wms',
           params: {
               'LAYERS': '		Finalisro:commercial area_amc'
           },
@@ -160,7 +161,7 @@
     title: 'lake',
     
     source: new ol.source.ImageWMS({
-         url: 'http://65.0.216.158:8080/geoserver/Finalisro/wms',
+         url: 'http://'+geoserverLink+':8080/geoserver/Finalisro/wms',
         params: {
             'LAYERS': '	Finalisro:lake_amc'
         },
@@ -172,7 +173,7 @@
     new ol.layer.Image({
     title: 'wasteland',
     source: new ol.source.ImageWMS({
-      url: 'http://65.0.216.158:8080/geoserver/Finalisro/wms',
+      url: 'http://'+geoserverLink+':8080/geoserver/Finalisro/wms',
      params: {
          'LAYERS': 'Finalisro:wasteland_amc'
      },
@@ -620,7 +621,9 @@ clearGraphics.onclick = clear;
                       '<p>Physical condition:' + assetData.physicalCondition + '</p>';
           
           
-    
+        if(assetData.assetClass === "Water Sources & Structures"){
+          content+= waterReport
+        }
         modalContent.innerHTML = content;
         modal.style.display = "block";
       });
