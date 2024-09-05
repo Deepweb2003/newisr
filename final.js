@@ -20,174 +20,175 @@ var geoserverLink='65.0.216.158'
     
         
         
-        var base_maps = new ol.layer.Group({
-                    'title': 'Base maps',
-                    layers: [
-                            new ol.layer.Tile({
-                            title: 'OSM',
-                            type: 'base',
-                            visible: true,
-                            source: new ol.source.OSM()
-                        }),
-    
-                        new ol.layer.Tile({
-                            title: 'Satellite',
-                            type: 'base',
-                            visible: true,
-                            source: new ol.source.XYZ({
-                                
-                                attributionsCollapsible: false,
-                                url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-                                maxZoom: 23
-                            })
-                        })
-                    ]
-                });
-           
+               
         
-          
-          var overlays = new ol.layer.Group({
-                    'title': 'AMC',
-                    layers: [
-                      new ol.layer.Image({
-                        title: 'AMC Boundry',
-                        source: new ol.source.ImageWMS({
-                             url: 'http://'+geoserverLink+':8080/geoserver/Finalisro/wms',
-                            params: {
-                                'LAYERS': '		Finalisro:Border_amc'
-                            },
-                            ratio: 1,
-                            serverType: 'geoserver',
-                          
-                        })
-                    }),
-            
-            
-                   
-            
-        
-        ],
-        
-        });
-    
-        var overlays2 = new ol.layer.Group({
-          'title': 'Roads',
-          layers: [
-         
-    
-    
-         
-    
-          new ol.layer.Image({
-              title: 'Other Roads',
-           
-              source: new ol.source.ImageWMS({
-                   url: 'http://'+geoserverLink+':8080/geoserver/Finalisro/wms',
-                  params: {
-                      'LAYERS': '		Finalisro:state highways_amc'
-                  },
-                  ratio: 1,
-                  serverType: 'geoserver'
-              })
-          }),
-          new ol.layer.Image({
-            title: 'National Highway',
-          
-            source: new ol.source.ImageWMS({
-                 url: 'http://'+geoserverLink+':8080/geoserver/Finalisro/wms',
-                params: {
-                    'LAYERS': '		Finalisro:national highways_amc'
-                },
-                ratio: 1,
-                serverType: 'geoserver'
-            })
-        }),
-        
-    
-    
-    
-    ],
-    
-    });
-    
-    var overlays3 = new ol.layer.Group({
-      'title': 'Land Use & Land Cover',
+    var base_maps = new ol.layer.Group({
+      'title': 'Base maps',
       layers: [
-     
-    
-    
-     
-    
-    
-    
-      new ol.layer.Image({
-        title: 'agricultural area',
-        
-        source: new ol.source.ImageWMS({
-             url: 'http://'+geoserverLink+':8080/geoserver/Finalisro/wms',
-            params: {
-                'LAYERS': '		Finalisro:agricultural area_amc'
-            },
-            ratio: 1,
-            serverType: 'geoserver'
-        })
-    }),
-    
-    new ol.layer.Image({
-      title: 'forest',
-    
-      source: new ol.source.ImageWMS({
-           url: 'http://'+geoserverLink+':8080/geoserver/Finalisro/wms',
-          params: {
-              'LAYERS': '		Finalisro:forest_amc'
-          },
-          ratio: 1,
-          serverType: 'geoserver'
-      })
-    }),
-    new ol.layer.Image({
-      title: 'commercial area',
-    
-      source: new ol.source.ImageWMS({
-           url: 'http://'+geoserverLink+':8080/geoserver/Finalisro/wms',
-          params: {
-              'LAYERS': '		Finalisro:commercial area_amc'
-          },
-          ratio: 1,
-          serverType: 'geoserver'
-      })
-    }),
-    new ol.layer.Image({
-    title: 'lake',
-    
-    source: new ol.source.ImageWMS({
-         url: 'http://'+geoserverLink+':8080/geoserver/Finalisro/wms',
-        params: {
-            'LAYERS': '	Finalisro:lake_amc'
-        },
-        ratio: 1,
-        serverType: 'geoserver'
-    })
+              new ol.layer.Tile({
+              title: 'OSM',
+              type: 'base',
+              visible: true,
+              source: new ol.source.OSM()
+          }),
 
-    }),
-    new ol.layer.Image({
-    title: 'wasteland',
-    source: new ol.source.ImageWMS({
-      url: 'http://'+geoserverLink+':8080/geoserver/Finalisro/wms',
-     params: {
-         'LAYERS': 'Finalisro:wasteland_amc'
-     },
-     ratio: 1,
-     serverType: 'geoserver'
- })
- }),
-    
-    
-    
-    ],
-    
-    });
-    
+          new ol.layer.Tile({
+              title: 'Satellite',
+              type: 'base',
+              visible: true,
+              source: new ol.source.XYZ({
+                  
+                  attributionsCollapsible: false,
+                  url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+                  maxZoom: 23
+              })
+          })
+      ]
+  });
+
+
+
+var overlays = new ol.layer.Group({
+      'title': 'AMC',
+      layers: [
+        new ol.layer.Image({
+          title: 'AMC Boundry',
+          source: new ol.source.ImageWMS({
+               url: 'http://65.0.216.158:8080/geoserver/database/wms',
+              params: {
+                  'LAYERS': '		database:amc_Border'
+              },
+              ratio: 1,
+              serverType: 'geoserver',
+            
+          })
+      }),
+
+
+     
+
+
+],
+
+});
+
+var overlays2 = new ol.layer.Group({
+'title': 'Roads',
+layers: [
+
+
+
+
+
+new ol.layer.Image({
+title: 'Other Roads',
+
+source: new ol.source.ImageWMS({
+     url: 'http://65.0.216.158:8080/geoserver/database/wms',
+    params: {
+        'LAYERS': '		database:state highways'
+    },
+    ratio: 1,
+    serverType: 'geoserver'
+})
+}),
+new ol.layer.Image({
+title: 'National Highway',
+
+source: new ol.source.ImageWMS({
+   url: 'http://65.0.216.158:8080/geoserver/database/wms',
+  params: {
+      'LAYERS': '		database:national highways'
+  },
+  ratio: 1,
+  serverType: 'geoserver'
+})
+}),
+
+
+
+
+],
+
+});
+
+var overlays3 = new ol.layer.Group({
+'title': 'Land Use & Land Cover',
+layers: [
+
+
+
+
+
+
+
+new ol.layer.Image({
+title: 'agricultural area',
+
+source: new ol.source.ImageWMS({
+url: 'http://65.0.216.158:8080/geoserver/database/wms',
+params: {
+  'LAYERS': '		database:agricultural area'
+},
+ratio: 1,
+serverType: 'geoserver'
+})
+}),
+
+new ol.layer.Image({
+title: 'forest',
+
+source: new ol.source.ImageWMS({
+url: 'http://65.0.216.158:8080/geoserver/database/wms',
+params: {
+'LAYERS': '		database:forest'
+},
+ratio: 1,
+serverType: 'geoserver'
+})
+}),
+new ol.layer.Image({
+title: 'commercial area',
+
+source: new ol.source.ImageWMS({
+url: 'http://65.0.216.158:8080/geoserver/database/wms',
+params: {
+'LAYERS': '		database:commercial area'
+},
+ratio: 1,
+serverType: 'geoserver'
+})
+}),
+new ol.layer.Image({
+title: 'lake',
+
+source: new ol.source.ImageWMS({
+url: 'http://65.0.216.158:8080/geoserver/database/wms',
+params: {
+'LAYERS': '	database:lake'
+},
+ratio: 1,
+serverType: 'geoserver'
+})
+
+}),
+new ol.layer.Image({
+title: 'wasteland',
+source: new ol.source.ImageWMS({
+url: 'http://65.0.216.158:8080/geoserver/database/wms',
+params: {
+'LAYERS': 'database:wasteland'
+},
+ratio: 1,
+serverType: 'geoserver'
+})
+}),
+
+
+
+],
+
+});
          
         
         
