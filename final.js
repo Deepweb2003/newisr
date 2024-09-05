@@ -559,15 +559,17 @@ clearGraphics.onclick = clear;
         var description = assetData.description;
     
     
-        if (assetData.assetClass === "Extension, Training & Data Collection Centres") {
-          console.log(assetData);
-      }
+       
        
         var iconFeature = new ol.Feature({
           geometry: new ol.geom.Point(ol.proj.fromLonLat([longitude, latitude, altitude])),
           name: assetData.assetName,
           assetData: assetData
         });
+
+         if (assetData.assetClass === "Extension, Training & Data Collection Centres") {
+      iconFeature.setStyle(generateIconStyle(assetData.assetClass));
+    }
     
         // iconFeature.setStyle(iconStyle);
         vectorLayer.getSource().addFeature(iconFeature);
@@ -576,11 +578,22 @@ clearGraphics.onclick = clear;
       map.addLayer(vectorLayer);
       var extent = vectorLayer.getSource().getExtent();
       var size = map.getSize();
+
+// Initially hide all features
+vectorLayer.getSource().getFeatures().forEach(function(feature) {
+  feature.setStyle(null);
+});
+
+var extent = vectorLayer.getSource().getExtent();
+var size = map.getSize();
+      
      
        // auto zoomed location while reloading
     var lat =  23.83;
     var lon = 91.30 ;
     var zoomLevel = 13; 
+
+    
     
     // Convert the latitude and longitude to OpenLayers coordinates
     var center = ol.proj.fromLonLat([lon, lat]);
@@ -739,24 +752,24 @@ clearGraphics.onclick = clear;
     });
     
     
-    // Filter function to show/hide points based on the asset class
-    function togglePointsByAssetClass(assetClass) {
-    vectorLayer.getSource().getFeatures().forEach(function(feature) {
-    var featureAssetClass = feature.get('assetData').assetClass;
-    if (featureAssetClass === assetClass) {
-      var currentStyle = feature.getStyle();
-      var originalStyle = feature.get('originalStyle');
-      if (currentStyle) {
-        // Feature is already visible, so remove the style to hide it
-        feature.setStyle(null);
-      } else {
-        // Feature is not visible, so apply the style to show it
-        // If the original style is stored, use it; otherwise, generate the style based on asset class
-        feature.setStyle(originalStyle || generateIconStyle(assetClass));
-      }
+    function togglePointsByAssetClass(assetClass, checked) {
+      vectorLayer.getSource().getFeatures().forEach(function(feature) {
+        var featureAssetClass = feature.get('assetData').assetClass;
+        if (featureAssetClass === assetClass) {
+          var originalStyle = feature.get('originalStyle');
+          if (checked) {
+            // Show the feature
+            feature.setStyle(originalStyle || generateIconStyle(assetClass));
+          } else {
+            // Hide the feature
+            feature.setStyle(null);
+          }
+        }
+      });
     }
-    });
-    }
+    document.getElementById("ExtansionCheckbox").addEventListener("change", function() {
+      togglePointsByAssetClass("Extension, Training & Data Collection Centres", this.checked);
+    });    
     
     // Function to handle the "Other Assets" checkbox
     function toggleOtherAssets(checked) {
