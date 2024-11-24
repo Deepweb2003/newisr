@@ -8,7 +8,7 @@
           const token=localStorage.getItem('authorization');
           axios.defaults.headers.common['authorization'] = `${localStorage.getItem('authorization')}`;
           if(token)
-          await axios.post("https://amc-backend.onrender.com/user/check")
+          await axios.post("https://isro-amc-backend.onrender.com/user/check")
           .then((res)=>{
             window.location.href="/final.html"
           });
@@ -85,7 +85,7 @@
 
 
       async function authenticate(username,password){
-        await axios.post("https://amc-backend.onrender.com/user/login",{username,password})
+        await axios.post("https://isro-amc-backend.onrender.com/user/login",{username,password})
         .then((res) =>{
             return res;
         })

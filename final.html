@@ -20,7 +20,7 @@
     const token=localStorage.getItem('authorization');
     axios.defaults.headers.common['authorization'] = `${localStorage.getItem('authorization')}`;
     if(!token) window.location.href='/index.html'
-    await axios.post("https://amc-backend.onrender.com/user/check")
+    await axios.post("https://isro-amc-backend.onrender.com/user/check")
     .catch((e)=>{
       window.location.href="/index.html"
     });
